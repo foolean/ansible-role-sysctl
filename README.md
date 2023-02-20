@@ -1,4 +1,4 @@
-# ansible-role-sysctlfs
+# ansible-role-sysctl
 
 Ansible role to manage sysctl
 
