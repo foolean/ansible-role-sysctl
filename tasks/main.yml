@@ -3,15 +3,23 @@
 # SPDX short identifier: BSD-3-Clause
 ---
 
+# We put the entire role in a block so we can create
+# a role specific tag, which saves the caller from
+# having to do so in their playbook.
+- name: Role foolean/sysctl
+  block:
 
-- name: CIS | Ensure address space layout randomization (ASLR) is enabled
-  become: true
-  ansible.builtin.template:
-    src: 'etc/sysctl.d/60-kernel.conf.j2'
-    dest: '/etc/sysctl.d/60-kernel.conf'
-    owner: 'root'
-    group: 'root'
-    mode: '0644'
-  when:
-    - ansible_os_family in ['Debian', 'RedHat']
+    - name: CIS | Ensure address space layout randomization (ASLR) is enabled
+      become: true
+      ansible.builtin.template:
+        src: 'etc/sysctl.d/60-kernel.conf.j2'
+        dest: '/etc/sysctl.d/60-kernel.conf'
+        owner: 'root'
+        group: 'root'
+        mode: '0644'
+      when:
+        - ansible_os_family in ['Debian', 'RedHat']
 
+  # Tags to be applied to this role (block)
+  tags:
+    - 'role_foolean_sysctl'
