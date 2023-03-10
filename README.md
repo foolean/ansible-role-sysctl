@@ -32,6 +32,7 @@ Ansible role to manage sysctl
 ## Supported Operating Systems
 
     * Debian (11)
+    * Raspbian (11)
     * RedHat (8)
     * Rocky (8)
 
